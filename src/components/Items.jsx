@@ -1,35 +1,43 @@
 import { useDispatch } from "react-redux";
 import { ordered } from "../features/cart/cartSlice";
 
-export default function Items(){
-  const dispatch = useDispatch()
-            return(
-        <>
-        <li className="items">
-          <img src="src\assets\ring.avif" alt="ring"></img>
-          <big>Ring<br/>Rs,1000  <button onClick={()=>dispatch(ordered({price : 1000}))}>Add To Cart</button></big>
-        </li>
-        <li className="items">
-          <img src="src\assets\berserk.jpg" alt="berserk"></img>
-          <big>Berserk Book Set<br/>Rs,5000  <button onClick={()=>dispatch(ordered({price : 5000}))}>Add To Cart</button></big>
-        </li>
-        <li className="items">
-          <img src="src\assets\jacket.jpg" alt="jacket"></img>
-          <big>Black Jacket <br/> Rs3500  <button onClick={()=>dispatch(ordered({price : 3500}))}>Add To Cart</button></big>
-        </li>
-        <li className="items">
-          <img src="src\assets\locket.jpg" alt="locket"></img>
-          <big>Locket <br/> Rs200  <button onClick={()=>dispatch(ordered({price : 200}))}>Add To Cart</button></big>
-        </li>
-        <li className="items">
-          <img src="src\assets\phone.jpeg" alt="phone"></img>
-          <big>Iphone 15 <br/>Rs100000  <button onClick={()=>dispatch(ordered({price : 100000}))}>Add To Cart</button></big>
-        </li>
-        <li className="items">
-          <img src="src\assets\toothbrush.avif" alt="toothbrush"></img>
-          <big>Toothbrush<br/>Rs150  <button onClick={()=>dispatch(ordered({price : 150}))}>Add To Cart</button></big>
-        </li>
+// Import images properly for production
+import ringImg from "../assets/ring.avif";
+import berserkImg from "../assets/berserk.jpg";
+import jacketImg from "../assets/jacket.jpg";
+import locketImg from "../assets/locket.jpg";
+import phoneImg from "../assets/phone.jpeg";
+import toothbrushImg from "../assets/toothbrush.avif";
 
-        </>
-            );
+export default function Items() {
+  const dispatch = useDispatch();
+
+  const products = [
+    { name: "Ring", price: 1000, img: ringImg },
+    { name: "Berserk Book Set", price: 5000, img: berserkImg },
+    { name: "Black Jacket", price: 3500, img: jacketImg },
+    { name: "Locket", price: 200, img: locketImg },
+    { name: "iPhone 15", price: 100000, img: phoneImg },
+    { name: "Toothbrush", price: 150, img: toothbrushImg },
+  ];
+
+  return (
+    <>
+      {products.map((product, index) => (
+        <li className="items" key={index}>
+          <img src={product.img} alt={product.name} />
+          <big>
+            {product.name} <br /> Rs {product.price}{" "}
+            <button
+              onClick={() =>
+                dispatch(ordered({ price: product.price }))
+              }
+            >
+              Add To Cart
+            </button>
+          </big>
+        </li>
+      ))}
+    </>
+  );
 }
