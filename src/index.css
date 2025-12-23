@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+body {
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------------- APP WRAPPER ---------------- */
+.app {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------------- TITLE ---------------- */
+h1 {
+  margin: 12px 0;
+  text-align: center;
+}
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.cart {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* ---------------- CONTENT AREA ---------------- */
+.content {
+  width: 100%;
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------------- ITEMS GRID ---------------- */
+.itemContainer {
+  list-style: none;
+  width: 90%;
+  display: grid;
+  gap: 12px;
+}
+
+/* Mobile */
+@media (max-width: 599px) {
+  .itemContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .itemContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop → FORCE 3 × 2 */
+@media (min-width: 1024px) {
+  .itemContainer {
+    width: 100%;
+    height: 65vh;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+/* ---------------- ITEM CARD ---------------- */
+.items {
+  border: 1px solid #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+}
+
+.items img {
+  width: 100%;
+  max-width: 150px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.items big {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.items button {
+  margin-top: 6px;
+  padding: 6px 10px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ---------------- CART (PERFECT CENTER) ---------------- */
+.cartContainer {
+  width: 90%;
+  max-width: 500px;
+  min-height: 60vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+  text-align: center;
+}
+
+.cartContainer button {
+  padding: 8px 14px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
